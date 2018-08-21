@@ -831,8 +831,8 @@ aside.left-panel {
   min-height: 100%;
   padding: 0 25px;
   vertical-align: top;
-  width: 280px;
-  transition: width 0.3s ease; }
+  transition: width 0.3s ease; 
+    width: 17%;}
 
 .navbar {
   background: #272c33;
