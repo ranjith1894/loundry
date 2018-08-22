@@ -6,8 +6,8 @@ class orders_m extends CI_Model {
         $this->load->database();
     }
 
-    public function verify($user, $pass) {
-        $query = $this->db->query("select username,admin_id  from admin where username='$user'  and password ='$pass'");
+    public function getallorders() {
+        $query = $this->db->query("SELECT O.orders_id,O.order_number, O.order_date,  O.amount,  O.status,C.customer_name FROM orders O , customer C WHERE O.customer_id  = C.customer_id");
         return $query->row();
     }
 
