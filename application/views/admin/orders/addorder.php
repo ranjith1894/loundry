@@ -25,42 +25,40 @@
                     <div class="card ">
                         <form action="<?php echo site_url('customers/add')?>" method="post" enctype="multipart/form-data" class="form-horizontal">
                       <div class="card-body card-block">
-                      
-                        
+                          <div id="test"></div>
+                         <div class="row form-group col-md-6 col-md-6">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Choose Customer</label></div>
+                            <div class="col-12 col-md-9">
+                              <select name="customer_id" id="selectcustomer" class="form-control">
+                                  <?php  foreach ($customers  as $row){?>
+                                <option value="<?=$row->customer_id?>"><?=$row->customer_name?></option>
+                                  <?php } ?>
+                                
+                              </select>
+                            </div>
+                          </div>
+                          <span id="ajaxcustomer">
                           <div class="row form-group col-md-6">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Customer name</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="customer_name" placeholder="Customer name" class="form-control">
+                            <div class="col-12 col-md-9"><input type="text" id="customer_name" name="customer_name" placeholder="Customer name" class="form-control" disabled="">
                             </div>
                           </div>
                           <div class="row form-group col-md-6">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Customer Phone</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="customer_phone" placeholder="Customer Phone" class="form-control">
+                            <div class="col-12 col-md-9"><input type="text" id="customer_phone" name="customer_phone" placeholder="Customer Phone" class="form-control" disabled="">
                             </div>
                           </div>
-                          <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Secondary Phone</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="seconary_phone" placeholder="Secondary Phone" class="form-control">
-                            </div>
-                          </div>
-                          <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="email-input" class=" form-control-label">Email id</label></div>
-                            <div class="col-12 col-md-9"><input type="email" id="email-input" name="email" placeholder="Enter Email" class="form-control">
-                            </div>
-                          </div>
-                         
-                          <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Address</label></div>
-                            <div class="col-12 col-md-9"><textarea name="address" id="textarea-input" rows="2" placeholder="Enter address..." class="form-control"></textarea></div>
-                          </div>
+                          
                           <div class="row form-group col-md-6 col-md-6">
                             <div class="col col-md-3"><label for="select" class=" form-control-label">Customer Type</label></div>
                             <div class="col-12 col-md-9">
-                              <select name="customer_type" id="select" class="form-control">
+                              <select name="customer_type" id="customer_type" class="form-control" disabled="">
                                 <option value="0">Regular</option>
                                 
                               </select>
                             </div>
                           </div>
+                          </span>
                           <div class="row form-group col-md-6">
                             <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Comments</label></div>
                             <div class="col-12 col-md-9"><textarea name="comments" id="textarea-input" rows="2" placeholder="Enter the comments..." class="form-control"></textarea></div>
@@ -78,14 +76,17 @@
                               <th><a href="javascript:void(0);" style="font-size:18px;" id="addMore" title="Add More Person"><i class="fa fa-plus"></i></a></th>
                               <tr>
                                   <td id="count">#</td>
-                              <td><select name="laundrytype[]" class="form-control">
-                                <option value="iron" selected>iron</option>
-                               
+                              <td><select name="laundrytype[]" class="form-control"  id="select_laundrytype">
+                                      <?php foreach ($laundry_type as $row) { ?>
+                                      <option value="<?=$row->laundry_type_id?>" selected><?=$row->type?></option>
+                                      <?php } ?>
                               </select>
                               </td>
                               
-                              <td><select name="laundryitem[]" class="form-control">
-                                <option value="" selected>Choose</option>
+                              <td><select name="laundryitem[]" class="form-control" id="select_laundryitem">
+                                  <?php foreach ($laundry as $row) { ?>
+                                      <option value="<?=$row->laundry_id?>" selected><?=$row->laundry_name?></option>
+                                      <?php } ?>
                               </select>
                               </td>
                               <td><input type="number" name="quantity[]" class="form-control"></td>
@@ -170,5 +171,36 @@ $(function(){
       });
 });      
 </script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#selectcustomer').change(function () {
+
+            var selDpto = $(this).val(); // <-- change this line
+            console.log(selDpto);
+
+            $.ajax({
+                url: "<?=site_url()?>/orders/ajaxselectcustomer",
+                async: false,
+                type: "POST",
+                data: "id="+selDpto,
+                dataType: "html",
+
+                success: function(data) {
+                    var js_array =JSON.stringify(data);
+                    $('#ajaxcustomer').html(data);
+                }
+            })
+        });
+    });
+</script>
+<script>
+      $('#select_laundrytype').change(function () {
+          var laundry = <?= json_encode($laundry)?>;
+          $('#select_laundryitem').val();
+          
+      });;
+    </script>
+
 </body>
 </html>

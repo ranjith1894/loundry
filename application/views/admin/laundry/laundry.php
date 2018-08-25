@@ -29,8 +29,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Customers</a></li>
-                            
+                            <li><a href="#">Laundry</a></li>
                         </ol>
                     </div>
                 </div>
@@ -46,10 +45,9 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Data Table</strong>
                         </div>
                             <div class="card-header">
-                                    <a href="<?=site_url('customers/getadd')?>">
+                                    <a href="<?=site_url('laundry/getadd')?>">
                                         <button type="button" class="btn btn-success" style="float: right">Create</button>
                                     </a>
                                 
@@ -59,24 +57,25 @@
                   <table id="bootstrap-data-table" class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Address</th>
+                        <th>Laundry Name</th>
+                        <th>Laundry Type</th>
+                        <th>Item Cost</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                         
-                      <?php  foreach ($customers as $row) { ?>
+                      <?php if(@$laundry){  foreach ($laundry as $row) { 
+                          ?>
                       <tr>
-                        <td><?=$row->customer_name?></td>
-                        <td><?=$row->customer_phone?></td>
-                        <td><?=$row->address?></td>
-                        <td><a href="<?=site_url('customers/getedit/'.$row->customer_id)?>">
+                        <td><?=$row->laundry_name?></td>
+                        <td><?=$row->type?></td>
+                        <td><?=$row->item_cost?></td>
+                        <td><a href="<?=site_url('laundry/getedit/'.$row->laundry_id)?>">
                                         <button type="button" class="btn btn-success">Edit</button>
                                     </a></td>
                       </tr>
-                      <?php } ?>
+                      <?php } }?>
                       
                     </tbody>
                   </table>

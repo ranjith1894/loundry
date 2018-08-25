@@ -22,6 +22,10 @@
                         <a href="<?=site_url('customers/get')?>"> <i class="menu-icon fa fa-laptop"></i>Customers</a>
                        
                     </li>
+                        <li class="menu-item-has-children dropdown">
+                        <a href="<?=site_url('laundry/get')?>"> <i class="menu-icon fa fa-laptop"></i>Laundry</a>
+                       
+                    </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="<?=site_url('orders/get')?>" > <i class="menu-icon fa fa-table"></i>Orders</a>
                         

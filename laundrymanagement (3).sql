@@ -30,8 +30,8 @@ CREATE TABLE `admin` (
   `admin_id` int(11) NOT NULL,
   `username` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
-  `created_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_timestamp` timestamp NOT NULL ,
+  `updated_timestamp` timestamp NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -55,8 +55,8 @@ CREATE TABLE `customer` (
   `email_id` varchar(256) NOT NULL,
   `address` varchar(1000) NOT NULL,
   `customer_type_id` int(11) NOT NULL,
-  `created_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `created_timestamp` timestamp NOT NULL ,
+  `updated_timestamp` timestamp NOT NULL 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -103,8 +103,8 @@ CREATE TABLE `laundry` (
   `quantity` int(11) NOT NULL,
   `item_cost` int(11) NOT NULL,
   `price` int(11) NOT NULL,
-  `created_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_timestamp` timestamp NOT NULL ,
+  `updated_timestamp` timestamp NOT NULL ,
   `orde` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -127,8 +127,8 @@ CREATE TABLE `orders` (
   `total_price` int(11) NOT NULL,
   `discount` int(11) NOT NULL,
   `amount` int(11) NOT NULL,
-  `created_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_timestamp` timestamp NOT NULL ,
+  `updated_timestamp` timestamp NOT NULL ,
   `status` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
