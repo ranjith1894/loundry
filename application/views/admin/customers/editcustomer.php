@@ -29,22 +29,22 @@
                         
                           <div class="row form-group col-md-6">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Customer name</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="customer_name" placeholder="Customer name" class="form-control" value="<?=$customer_details[0]->customer_name?>">
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="customer_name" placeholder="Customer name" class="form-control" value="<?=@$customer_details[0]->first_name?>">
                             </div>
                           </div>
                           <div class="row form-group col-md-6">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Customer Phone</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="customer_phone" placeholder="Customer Phone" class="form-control" value="<?=$customer_details[0]->customer_phone ?>">
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="customer_phone" placeholder="Customer Phone" class="form-control" value="<?=@$customer_details[0]->phone_number ?>">
                             </div>
                           </div>
                           <div class="row form-group col-md-6">
                             <div class="col col-md-3"><label for="text-input" class=" form-control-label">Secondary Phone</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="secondary_phone" placeholder="Secondary Phone" class="form-control" value="<?=$customer_details[0]->secondary_phone?>">
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="secondary_phone" placeholder="Secondary Phone" class="form-control" value="<?=@$customer_details[0]->secondary_phone?>">
                             </div>
                           </div>
                           <div class="row form-group col-md-6">
                             <div class="col col-md-3"><label for="email-input" class=" form-control-label">Email id</label></div>
-                            <div class="col-12 col-md-9"><input type="email" id="email-input" name="email" placeholder="Enter Email" class="form-control" value="<?=$customer_details[0]->email_id?>">
+                            <div class="col-12 col-md-9"><input type="email" id="email-input" name="email" placeholder="Enter Email" class="form-control" value="<?=@$customer_details[0]->email_id?>">
                             </div>
                           </div>
                          
@@ -64,7 +64,7 @@
                                           selected="" 
                                      <?php } ?>
                                           >
-                                            <?=$row->type?></option>
+                                            <?=$row->customer_types?></option>
                                   <?php } ?>
                               </select>
                             </div>

@@ -23,48 +23,57 @@
                  
                   <div class="col-lg-12">
                     <div class="card ">
-                        <form action="<?php echo site_url('customers/add')?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="<?php echo site_url('product/add_product_types')?>" method="post" enctype="multipart/form-data" class="form-horizontal">
                       <div class="card-body card-block">
                       
                         
-                          <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Customer name</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="customer_name" placeholder="Customer name" class="form-control">
-                            </div>
-                          </div>
-                          <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Customer Phone</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="customer_phone" placeholder="Customer Phone" class="form-control">
-                            </div>
-                          </div>
-                          <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Secondary Phone</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="seconary_phone" placeholder="Secondary Phone" class="form-control">
-                            </div>
-                          </div>
-                          <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="email-input" class=" form-control-label">Email id</label></div>
-                            <div class="col-12 col-md-9"><input type="email" id="email-input" name="email" placeholder="Enter Email" class="form-control">
-                            </div>
-                          </div>
+                          
                          
-                          <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Address</label></div>
-                            <div class="col-12 col-md-9"><textarea name="address" id="textarea-input" rows="2" placeholder="Enter address..." class="form-control"></textarea></div>
-                          </div>
-                          <div class="row form-group col-md-6 col-md-6">
-                            <div class="col col-md-3"><label for="select" class=" form-control-label">Customer Type</label></div>
+                       <div class="row form-group col-md-6 col-md-6">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Product</label></div>
                             <div class="col-12 col-md-9">
-                              <select name="customer_type_id" id="select" class="form-control">
-                                  <?php foreach ($customer_type as $row) { ?>
-                                  <option value="<?=$row->customer_type_id ?>"><?=$row->customer_types?></option>
+                              <select name="product_id" id="select" class="form-control">
+                                  <?php foreach ($product as $row) { ?>
+                                  <option value="<?=$row->product_id ?>"><?=$row->product_name?></option>
                                   <?php } ?>
                               </select>
                             </div>
                           </div>
+                          <div class="row form-group col-md-6 col-md-6">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Price package</label></div>
+                            <div class="col-12 col-md-9">
+                              <select name="price_package_id" id="select" class="form-control">
+                                  <?php foreach ($price_package as $row) { ?>
+                                  <option value="<?=$row->price_package_id ?>"><?=$row->price_package_name?></option>
+                                  <?php } ?>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="row form-group col-md-6 col-md-6">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Types</label></div>
+                            <div class="col-12 col-md-9">
+                              <select name="types_id" id="select" class="form-control">
+                                  <?php foreach ($types as $row) { ?>
+                                  <option value="<?=$row->types_id ?>"><?=$row->types_name?></option>
+                                  <?php } ?>
+                              </select>
+                            </div>
+                          </div>
+                           <div class="row form-group col-md-6 col-md-6">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Gender</label></div>
+                            <div class="col-12 col-md-9">
+                              <select name="gender_id" id="select" class="form-control">
+                                  <option value="1">Male</option>
+                                  <option value="2">Female</option>
+                              </select>
+                            </div>
+                          </div>
                           
-                          
-                          
+                          <div class="row form-group col-md-6">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Item cost</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="item_cost" placeholder="Cost" class="form-control">
+                            </div>
+                          </div>
                       
                       </div>
                              

@@ -29,8 +29,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Customers</a></li>
-                            
+                            <li><a href="#">Laundry</a></li>
                         </ol>
                     </div>
                 </div>
@@ -46,10 +45,9 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Data Table</strong>
                         </div>
                             <div class="card-header">
-                                    <a href="<?=site_url('customers/getadd')?>">
+                                    <a href="<?=site_url('product/getadd_product_types')?>">
                                         <button type="button" class="btn btn-success" style="float: right">Create</button>
                                     </a>
                                 
@@ -59,24 +57,22 @@
                   <table id="bootstrap-data-table" class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th>Name</th>
-                        <th>Phone</th>
-                        <th>Address</th>
+                        <th>Product Name</th>
+                        
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                         
-                      <?php  foreach ($customers as $row) { ?>
+                      <?php if(@$product_types){  foreach ($product_types as $row) { 
+                          ?>
                       <tr>
-                        <td><?=$row->first_name?></td>
-                        <td><?=$row->phone_number?></td>
-                        <td><?=$row->address?></td>
-                        <td><a href="<?=site_url('customers/getedit/'.$row->customer_id)?>">
+                        <td><?=$row->product_name?></td>
+                        <td><a href="<?=site_url('product/getedit_product_types/'.$row->product_type_id)?>">
                                         <button type="button" class="btn btn-success">Edit</button>
                                     </a></td>
                       </tr>
-                      <?php } ?>
+                      <?php } }?>
                       
                     </tbody>
                   </table>

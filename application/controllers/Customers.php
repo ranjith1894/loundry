@@ -16,7 +16,7 @@ class Customers extends CI_Controller {
     
 	public function get()
 	{
-      $q = $this->db->get('customer');
+      $q = $this->db->get('customer_details');
       $data['customers'] = $q->result();
       
       
@@ -41,7 +41,7 @@ class Customers extends CI_Controller {
 		$this->get();
 	}
    public function getedit($id){
-     $q = $this->db->get_where('customer', array('customer_id' => $id));
+     $q = $this->db->get_where('customer_details', array('customer_id' => $id));
      $data['customer_details'] = $q->result();
      
       $q1 = $this->db->get('customer_type');

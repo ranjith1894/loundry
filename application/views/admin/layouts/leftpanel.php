@@ -17,15 +17,19 @@
                     <li class="active">
                         <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
-                    <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
+                
                     <li class="menu-item-has-children dropdown">
                         <a href="<?=site_url('customers/get')?>"> <i class="menu-icon fa fa-laptop"></i>Customers</a>
                        
                     </li>
-                        <li class="menu-item-has-children dropdown">
-                        <a href="<?=site_url('laundry/get')?>"> <i class="menu-icon fa fa-laptop"></i>Laundry</a>
-                       
-                    </li>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Products</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-puzzle-piece"></i><a href="<?=site_url('product/get')?>">Products</a></li>
+                            <li><i class="fa fa-id-badge"></i><a href="<?=site_url('product/getproduct_types')?>">Product price</a></li>
+                          
+                        </ul>
+                   
                     <li class="menu-item-has-children dropdown">
                         <a href="<?=site_url('orders/get')?>" > <i class="menu-icon fa fa-table"></i>Orders</a>
                         
