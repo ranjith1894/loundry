@@ -44,11 +44,12 @@
                  
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                        </div>
+                        
                             <div class="card-header">
                                     <a href="<?=site_url('product/getadd')?>">
-                                        <button type="button" class="btn btn-success" style="float: right">Create</button>
+                                        <div class="icon-container" style="float: right">
+                                                <span class="ti-plus"></span><span class="icon-name">Create new</span>
+                                            </div>
                                     </a>
                                 
                             </div>
@@ -69,7 +70,9 @@
                       <tr>
                         <td><?=$row->product_name?></td>
                         <td><a href="<?=site_url('product/getedit/'.$row->product_id)?>">
-                                        <button type="button" class="btn btn-success">Edit</button>
+                                        <div class="icon-container">
+                                                <span class="ti-pencil-alt"></span><span class="icon-name">Edit</span>
+                                            </div>
                                     </a></td>
                       </tr>
                       <?php } }?>

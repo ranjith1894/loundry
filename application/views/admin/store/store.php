@@ -29,7 +29,7 @@
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
                             <li><a href="#">Dashboard</a></li>
-                            <li><a href="#">Laundry</a></li>
+                            <li><a href="#">Orders</a></li>
                         </ol>
                     </div>
                 </div>
@@ -46,8 +46,8 @@
                     <div class="card">
                         
                             <div class="card-header">
-                                    <a href="<?=site_url('product/getadd_product_types')?>">
-                                       <div class="icon-container" style="float: right">
+                                    <a href="<?=site_url('store/getadd')?>">
+                                        <div class="icon-container" style="float: right">
                                                 <span class="ti-plus"></span><span class="icon-name">Create new</span>
                                             </div>
                                     </a>
@@ -58,26 +58,25 @@
                   <table id="bootstrap-data-table" class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th>Product Name</th>
-                        <th>Product Package Name</th>
-                        <th>Gender</th>
-                        <th>Type</th>
-                        <th>Product Price</th>
+                        <th>#</th>
+                        <th>Store</th>
+                        <th>Address</th>
+                        <th>Contact person</th>
+                        <th>Phone</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                         
-                      <?php if(@$product_types){  foreach ($product_types as $row) { 
-                          ?>
+                      <?php $i=0; if(@$store) { foreach ($store as $row) { $i++ ;?>
                       <tr>
-                        <td><?=$row->product_name?></td>
-                        <td><?=$row->price_package_name?></td>
-                        <td><?=$row->gender_name?></td>
-                        <td><?=$row->types_name?></td>
-                        <td><?=$row->product_price?></td>
-                        <td><a href="<?=site_url('product/getedit_product_types/'.$row->product_type_id)?>">
-                                       <div class="icon-container">
+                          <td><?=$i?></td>  
+                        <td><?=$row->store_name?></td>
+                        <td><?=$row->store_address?></td>
+                        <td><?=$row->store_contact_person?></td>
+                        <td><?=$row->store_phone_number?></td>
+                        <td><a href="<?=site_url('store/getedit/'.$row->store_id)?>">
+                                     <div class="icon-container">
                                                 <span class="ti-pencil-alt"></span><span class="icon-name">Edit</span>
                                             </div>
                                     </a></td>

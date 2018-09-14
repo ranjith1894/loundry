@@ -63,8 +63,9 @@
                             <div class="col col-md-3"><label for="select" class=" form-control-label">Gender</label></div>
                             <div class="col-12 col-md-9">
                               <select name="gender_id" id="select" class="form-control">
-                                  <option value="1">Male</option>
-                                  <option value="2">Female</option>
+                                 <?php foreach ($gender as $row) { ?>
+                                  <option value="<?=$row->gender_id ?>"><?=$row->gender_name?></option>
+                                  <?php } ?>
                               </select>
                             </div>
                           </div>

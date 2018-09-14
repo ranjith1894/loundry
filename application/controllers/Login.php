@@ -48,4 +48,14 @@ class Login extends CI_Controller {
         }
 	
 	}
+   public function logout()
+	{
+      $this->session->set_userdata('id', 0);
+		$this->load->view('login');
+	}
+   public function home()
+	{
+      $this->session->set_userdata('id', 0);
+		 $this->load->view('admin/home');
+	}
 }

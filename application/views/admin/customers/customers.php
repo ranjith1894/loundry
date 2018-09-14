@@ -45,12 +45,12 @@
                  
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Data Table</strong>
-                        </div>
+                   
                             <div class="card-header">
                                     <a href="<?=site_url('customers/getadd')?>">
-                                        <button type="button" class="btn btn-success" style="float: right">Create</button>
+                                      <div class="icon-container" style="float: right">
+                                                <span class="ti-plus"></span><span class="icon-name">Create new</span>
+                                            </div>
                                     </a>
                                 
                             </div>
@@ -73,7 +73,9 @@
                         <td><?=$row->phone_number?></td>
                         <td><?=$row->address?></td>
                         <td><a href="<?=site_url('customers/getedit/'.$row->customer_id)?>">
-                                        <button type="button" class="btn btn-success">Edit</button>
+                                       <div class="icon-container">
+                                                <span class="ti-pencil-alt"></span><span class="icon-name">Edit</span>
+                                            </div>
                                     </a></td>
                       </tr>
                       <?php } ?>

@@ -22,7 +22,7 @@ class Product extends CI_Controller {
 	}
         public function getproduct_types()
 	{
-                             $data['product_types'] = $this->Product_M->getproducttypes();
+      $data['product_types'] = $this->Product_M->getproducttypes();
                              
 		$this->load->view('admin/product/product_types', $data);
 	}
@@ -38,6 +38,8 @@ class Product extends CI_Controller {
              $data['price_package'] = $q->result();
              $q = $this->db->get('types');
              $data['types'] = $q->result();
+             $q = $this->db->get('gender');
+             $data['gender'] = $q->result();
       $this->load->view('admin/product/addproduct_types',$data);
 	}
         
@@ -55,6 +57,7 @@ class Product extends CI_Controller {
       $types_id=$this->input->post('types_id');
       $gender_id=$this->input->post('gender_id');
       $item_cost=$this->input->post('item_cost');
+      
       $result = $this->Product_M->addproduct_types($product_id,$price_package_id,$types_id,$gender_id,$item_cost);
       $this->getadd_product_types();
 	}
@@ -64,7 +67,7 @@ class Product extends CI_Controller {
      $this->load->view('admin/product/editproduct',$data);
    }
      public function getedit_product_types($id){
-     $q = $this->db->get_where('product_types', array('product_id' => $id));
+     $q = $this->db->get_where('product_types', array('product_type_id' => $id));
      $data['product_types'] = $q->result();
      
       $q = $this->db->get('products');
@@ -73,6 +76,8 @@ class Product extends CI_Controller {
              $data['price_package'] = $q->result();
              $q = $this->db->get('types');
              $data['types'] = $q->result();
+             $q = $this->db->get('gender');
+             $data['gender'] = $q->result();
      $this->load->view('admin/product/editproduct_types',$data);
    }
    public function update()
@@ -83,6 +88,17 @@ class Product extends CI_Controller {
       $result = $this->Product_M->updateproduct($product_name,$id);
 		$this->get();
 	}
+   public function update_product_types(){
+     $id =$this->input->post('id');
+     $product_id=$this->input->post('product_id');
+      $price_package_id=$this->input->post('price_package_id');
+      $types_id=$this->input->post('types_id');
+      $gender_id=$this->input->post('gender_id');
+      $item_cost=$this->input->post('item_cost');
+      
+      $result = $this->Product_M->updateproduct_types($product_id,$price_package_id,$types_id,$gender_id,$item_cost,$id);
+      $this->getproduct_types();
+   }
     public function delete()
 	{
 		$this->load->view('login');

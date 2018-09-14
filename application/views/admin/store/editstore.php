@@ -23,51 +23,53 @@
                  
                   <div class="col-lg-12">
                     <div class="card ">
-                        <form action="<?php echo site_url('customers/add')?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="<?php echo site_url('store/update')?>" method="post" enctype="multipart/form-data" class="form-horizontal">
                       <div class="card-body card-block">
-                      
+                     
                         
                           <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Customer name</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="customer_name" placeholder="Customer name" class="form-control">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Store name</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="store_name" placeholder="Store name" class="form-control" value="<?=$store_details[0]->store_name?>">
                             </div>
                           </div>
                           <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Customer Phone</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="customer_phone" placeholder="Customer Phone" class="form-control">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Store Address</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="store_address" placeholder="Store Phone" class="form-control" value="<?=$store_details[0]->store_phone_number ?>">
                             </div>
                           </div>
                           <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Secondary Phone</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="secondary_phone" placeholder="Secondary Phone" class="form-control">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Contact person</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="store_contact_person" placeholder="Contact person" class="form-control" value="<?=$store_details[0]->store_contact_person?>">
                             </div>
                           </div>
                           <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="email-input" class=" form-control-label">Email id</label></div>
-                            <div class="col-12 col-md-9"><input type="email" id="email-input" name="email" placeholder="Enter Email" class="form-control">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Phone</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="store_phone_number" placeholder="Phone" class="form-control" value="<?=$store_details[0]->store_phone_number?>">
+                            </div>
+                          </div>
+                          <div class="row form-group col-md-6">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email</label></div>
+                            <div class="col-12 col-md-9"><input type="email" id="text-input" name="store_email" placeholder="Email" class="form-control" value="<?=$store_details[0]->store_email?>">
+                            </div>
+                          </div>
+                          <div class="row form-group col-md-6">
+                            <div class="col col-md-3"><label for="email-input" class=" form-control-label">Billing price</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="email-input" name="store_billing_price" placeholder="Enter Email" class="form-control" value="<?=$store_details[0]->store_billing_price?>">
+                            </div>
+                          </div>
+                          <div class="row form-group col-md-6">
+                            <div class="col col-md-3"><label for="email-input" class=" form-control-label">Store price</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="email-input" name="store_price" placeholder="Enter Email" class="form-control" value="<?=$store_details[0]->store_price?>">
                             </div>
                           </div>
                          
-                          <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="textarea-input" class=" form-control-label">Address</label></div>
-                            <div class="col-12 col-md-9"><textarea name="address" id="textarea-input" rows="2" placeholder="Enter address..." class="form-control"></textarea></div>
-                          </div>
-                          <div class="row form-group col-md-6 col-md-6">
-                            <div class="col col-md-3"><label for="select" class=" form-control-label">Customer Type</label></div>
-                            <div class="col-12 col-md-9">
-                              <select name="customer_type_id" id="select" class="form-control">
-                                  <?php foreach ($customer_type as $row) { ?>
-                                  <option value="<?=$row->customer_type_id ?>"><?=$row->customer_types?></option>
-                                  <?php } ?>
-                              </select>
-                            </div>
-                          </div>
+                        
                           
                           
                           
                       
                       </div>
-                             
+                            <input type="hidden" name="id" value="<?=$store_details[0]->store_id?>" >       
                       <div class="">
                         <button type="submit" class="btn btn-primary btn-sm">
                           <i class="fa fa-dot-circle-o"></i> Submit

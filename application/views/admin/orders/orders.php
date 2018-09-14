@@ -49,35 +49,41 @@
                         </div>
                             <div class="card-header">
                                     <a href="<?=site_url('orders/getadd')?>">
-                                        <button type="button" class="btn btn-success" style="float: right">Create</button>
+                                        <div class="icon-container" style="float: right">
+                                                <span class="ti-plus"></span><span class="icon-name">Create new</span>
+                                            </div>
                                     </a>
                                 
                             </div>
                            
                         <div class="card-body">
-                  <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                  <table class="table table-striped table-bordered">
                     <thead>
                       <tr>
                         <th>#</th>
                         <th>Order Number</th>
                         <th>Customer Name</th>
                         <th>Amount</th>
-                        <th>Status</th>
+                       
                         <th>Date</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
                         
-                      <?php $i=0; if(@$orders) { foreach ($orders as $row) { $i++ ;?>
+                      <?php $i=0; if(@$orders) {   foreach ($orders as $row) { $i++ ;?>
                       <tr>
                           <td><?=$i?></td>  
-                        <td><?=$row->order_number?></td>
-                        <td><?=$row->amount?></td>
-                        <td><?=$row->status?></td>
-                        <td><?=$row->date?></td>
+                        <td><?=$row->order_no?></td>
+                        <td><?=$row->first_name?></td>
+                        
+                        <td><?=$row->total_amount?></td>
+                        <td><?=$row->order_date?></td>
                         <td><a href="<?=site_url('orders/getedit/'.$row->order_id)?>">
-                                        <button type="button" class="btn btn-success">Edit</button>
+                                <div class="icon-container">
+                                                <span class="ti-pencil-alt"></span><span class="icon-name">Edit</span>
+                                            </div>
+                                 
                                     </a></td>
                       </tr>
                       <?php } }?>

@@ -1602,9 +1602,9 @@ header .form-inline {
   margin: 8vh auto; }
 
 .login-form {
-  background: #ffffff;
-  padding: 30px 30px 20px;
-  border-radius: 2px; }
+ padding: 30px 30px 20px;
+    border-radius: 18px;
+    background-color: #145577; }
 
 .login-form h4 {
   color: #878787;
@@ -1625,11 +1625,11 @@ header .form-inline {
   border: 0px; }
 
 .login-form label {
-  color: #878787;
+  color: #ffffff;
   text-transform: uppercase; }
 
 .login-form label a {
-  color: #ff2e44; }
+  color: #ffffff; }
 
 .social-login-content {
   margin: 0px -30px;
@@ -2236,5 +2236,12 @@ header .form-inline {
           padding: 0; }
         .right-panel .content #bootstrap-data-table_wrapper .table td, .right-panel .content #bootstrap-data-table_wrapper .table th {
           padding: 5px; } }
+body {
+   background-image: url("Background.png");
+   background-color: #cccccc;
+}
+.form-control {
+    font-size: 12px;
+}
 
 /*# sourceMappingURL=style.css.map */

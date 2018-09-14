@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.10deb1
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 02, 2018 at 01:32 PM
--- Server version: 5.5.50-0ubuntu0.14.04.1
--- PHP Version: 5.5.9-1ubuntu4.20
+-- Generation Time: Sep 14, 2018 at 02:21 PM
+-- Server version: 5.7.23-0ubuntu0.16.04.1
+-- PHP Version: 7.0.30-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `laundrymanagement`
@@ -26,13 +26,12 @@ SET time_zone = "+00:00";
 -- Table structure for table `addons`
 --
 
-CREATE TABLE IF NOT EXISTS `addons` (
-  `addons_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `addons` (
+  `addons_id` int(11) NOT NULL,
   `addons_name` varchar(255) DEFAULT NULL,
   `addons_price` int(11) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`addons_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `addons`
@@ -55,19 +54,18 @@ INSERT INTO `addons` (`addons_id`, `addons_name`, `addons_price`, `status`) VALU
 -- Table structure for table `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
-  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL,
   `username` varchar(256) NOT NULL,
-  `password` varchar(256) NOT NULL,
-  PRIMARY KEY (`admin_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `password` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`admin_id`, `username`, `password`) VALUES
-(1, 'admin@gmail.com', '123');
+(1, 'admin@gmail.com', 'letme!!in');
 
 -- --------------------------------------------------------
 
@@ -75,16 +73,15 @@ INSERT INTO `admin` (`admin_id`, `username`, `password`) VALUES
 -- Table structure for table `customer_delivery_address`
 --
 
-CREATE TABLE IF NOT EXISTS `customer_delivery_address` (
-  `cus_addr_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `customer_delivery_address` (
+  `cus_addr_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `customer_address` text NOT NULL,
   `delivery_latitude` decimal(10,6) NOT NULL,
   `delivery_longitude` decimal(10,6) NOT NULL,
   `address_type` int(11) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`cus_addr_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -92,8 +89,8 @@ CREATE TABLE IF NOT EXISTS `customer_delivery_address` (
 -- Table structure for table `customer_details`
 --
 
-CREATE TABLE IF NOT EXISTS `customer_details` (
-  `customer_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `customer_details` (
+  `customer_id` int(11) NOT NULL,
   `customer_type_id` int(11) NOT NULL DEFAULT '1',
   `phone_number` varchar(500) NOT NULL,
   `secondary_phone` varchar(256) NOT NULL,
@@ -109,16 +106,16 @@ CREATE TABLE IF NOT EXISTS `customer_details` (
   `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `last_login_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`customer_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer_details`
 --
 
 INSERT INTO `customer_details` (`customer_id`, `customer_type_id`, `phone_number`, `secondary_phone`, `password`, `first_name`, `last_name`, `email_id`, `customer_image`, `address`, `device_type`, `device_id`, `access_token`, `created_date`, `modified_date`, `last_login_date`, `status`) VALUES
-(1, 1, '11111', '22', '', 'TEST', NULL, 'test@gmail.com', NULL, '                                                            test                                                                        ', '', NULL, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1);
+(1, 1, '11111', '22', '', 'TEST', NULL, 'test@gmail.com', NULL, '                                                            test                                                                        ', '', NULL, '', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1),
+(2, 1, '1111111111', '9846069869', '0', 'test1 test2', NULL, 'test1@gmail.co', NULL, '                              test1 test1 address                                    ', '0', NULL, '0', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -126,14 +123,13 @@ INSERT INTO `customer_details` (`customer_id`, `customer_type_id`, `phone_number
 -- Table structure for table `customer_subscribe`
 --
 
-CREATE TABLE IF NOT EXISTS `customer_subscribe` (
-  `customer_subscribe_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `customer_subscribe` (
+  `customer_subscribe_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `subscribe_id` int(11) NOT NULL,
-  `subscribe_day_id` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`customer_subscribe_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `subscribe_day_id` varchar(255) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -141,13 +137,12 @@ CREATE TABLE IF NOT EXISTS `customer_subscribe` (
 -- Table structure for table `customer_type`
 --
 
-CREATE TABLE IF NOT EXISTS `customer_type` (
-  `customer_type_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `customer_type` (
+  `customer_type_id` int(11) NOT NULL,
   `customer_types` varchar(255) DEFAULT NULL,
   `price_package_id` int(11) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`customer_type_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer_type`
@@ -163,8 +158,8 @@ INSERT INTO `customer_type` (`customer_type_id`, `customer_types`, `price_packag
 -- Table structure for table `driver_details`
 --
 
-CREATE TABLE IF NOT EXISTS `driver_details` (
-  `driver_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `driver_details` (
+  `driver_id` int(11) NOT NULL,
   `store_id` int(11) NOT NULL,
   `phone_number` varchar(55) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -181,9 +176,27 @@ CREATE TABLE IF NOT EXISTS `driver_details` (
   `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `last_login_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`driver_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gender`
+--
+
+CREATE TABLE `gender` (
+  `gender_id` int(11) NOT NULL,
+  `gender_name` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gender`
+--
+
+INSERT INTO `gender` (`gender_id`, `gender_name`) VALUES
+(1, 'Male\r\n'),
+(2, 'Female\r\n');
 
 -- --------------------------------------------------------
 
@@ -191,8 +204,8 @@ CREATE TABLE IF NOT EXISTS `driver_details` (
 -- Table structure for table `orders`
 --
 
-CREATE TABLE IF NOT EXISTS `orders` (
-  `order_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `orders` (
+  `order_id` int(11) NOT NULL,
   `order_no` varchar(20) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `store_id` int(11) DEFAULT NULL,
@@ -212,9 +225,17 @@ CREATE TABLE IF NOT EXISTS `orders` (
   `payment_status` int(11) NOT NULL,
   `order_status` int(11) NOT NULL,
   `created_date` date NOT NULL,
-  `modified_date` date NOT NULL,
-  PRIMARY KEY (`order_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `modified_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`order_id`, `order_no`, `customer_id`, `store_id`, `driver_id`, `order_date`, `pickup_date`, `scheduled_date`, `delivery_address_id`, `subcribe_status`, `pickup_id`, `payment_method`, `notes`, `pickup_address`, `latitude`, `longitude`, `total_amount`, `payment_status`, `order_status`, `created_date`, `modified_date`) VALUES
+(42, 'ORD43', 1, 1, 1, '2018-09-09 18:30:00', '0000-00-00 00:00:00', '2018-09-07 18:30:00', 1, 'NO', 1, NULL, 'ssssss', 'sssssssssssss', '1.000000', '1.000000', '225.00', 1, 1, '2018-09-10', '2018-09-08'),
+(43, 'ORD43', 1, 1, 1, '2018-09-04 18:30:00', '0000-00-00 00:00:00', '2018-09-11 18:30:00', 1, 'NO', 1, NULL, 'test', 'test1 test1 address', '1.000000', '1.000000', '300.00', 1, 1, '2018-09-05', '2018-09-12'),
+(44, 'ORD44', 1, 1, 1, '2018-09-04 18:30:00', '0000-00-00 00:00:00', '2018-09-10 18:30:00', 1, 'NO', 1, NULL, 'test', 'test1 test1 address', '1.000000', '1.000000', '150.00', 1, 1, '2018-09-05', '2018-09-11');
 
 -- --------------------------------------------------------
 
@@ -222,8 +243,8 @@ CREATE TABLE IF NOT EXISTS `orders` (
 -- Table structure for table `orders_history`
 --
 
-CREATE TABLE IF NOT EXISTS `orders_history` (
-  `order_history_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `orders_history` (
+  `order_history_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `order_no` varchar(20) NOT NULL,
   `customer_id` int(11) NOT NULL,
@@ -238,9 +259,8 @@ CREATE TABLE IF NOT EXISTS `orders_history` (
   `longitude` decimal(10,6) NOT NULL,
   `total_amount` decimal(11,2) NOT NULL,
   `payment_status` varchar(15) DEFAULT NULL,
-  `order_status` int(11) NOT NULL,
-  PRIMARY KEY (`order_history_id`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `order_status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -248,15 +268,14 @@ CREATE TABLE IF NOT EXISTS `orders_history` (
 -- Table structure for table `order_activity`
 --
 
-CREATE TABLE IF NOT EXISTS `order_activity` (
-  `order_activity_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `order_activity` (
+  `order_activity_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `activity_title` varchar(255) NOT NULL,
   `activity_message` varchar(2000) DEFAULT NULL,
   `activity_type` varchar(15) DEFAULT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`order_activity_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `date` date NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -264,13 +283,12 @@ CREATE TABLE IF NOT EXISTS `order_activity` (
 -- Table structure for table `order_bag`
 --
 
-CREATE TABLE IF NOT EXISTS `order_bag` (
-  `order_bag_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `order_bag` (
+  `order_bag_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `pickup_bag_no` varchar(15) DEFAULT NULL,
-  `delivery_bag_no` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`order_bag_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `delivery_bag_no` varchar(15) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -278,8 +296,8 @@ CREATE TABLE IF NOT EXISTS `order_bag` (
 -- Table structure for table `order_details`
 --
 
-CREATE TABLE IF NOT EXISTS `order_details` (
-  `order_details_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `order_details` (
+  `order_details_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `type_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
@@ -287,9 +305,46 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `total` decimal(6,2) NOT NULL,
   `product_type_id` int(11) DEFAULT NULL,
   `addons_id` varchar(55) DEFAULT NULL,
-  `status` int(11) NOT NULL,
-  PRIMARY KEY (`order_details_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `status` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`order_details_id`, `order_id`, `type_id`, `product_id`, `quantity`, `total`, `product_type_id`, `addons_id`, `status`) VALUES
+(20, 33, 1, 1, 1, '100.00', 3, '1', 1),
+(19, 33, 1, 1, 1, '100.00', 3, '1', 1),
+(18, 32, 1, 1, 1, '100.00', 3, '1', 1),
+(17, 32, 1, 1, 1, '100.00', 3, '1', 1),
+(16, 29, 1, 1, 2, '200.00', 3, '1', 1),
+(15, 28, 1, 1, 1, '100.00', 3, '1, 2', 1),
+(14, 27, 1, 1, 1, '100.00', 3, '1, 2', 1),
+(13, 26, 1, 1, 1, '100.00', 3, '1, 2', 1),
+(12, 25, 1, 1, 1, '100.00', 3, '1, 2', 1),
+(11, 24, 1, 1, 1, '100.00', 3, '1, 2', 1),
+(21, 34, 1, 1, 1, '175.00', 3, '1, 2, 1', 1),
+(22, 34, 1, 1, 1, '100.00', 3, '', 1),
+(23, 35, 1, 1, 1, '100.00', 3, '1, 2, 1', 1),
+(24, 35, 1, 1, 1, '100.00', 3, '', 1),
+(25, 36, 1, 1, 1, '100.00', 3, '1, 2, 1, 2', 1),
+(26, 36, 1, 1, 1, '100.00', 3, '', 1),
+(27, 37, 1, 1, 1, '100.00', 3, '1, 2, 1, 2', 1),
+(28, 37, 1, 1, 1, '100.00', 3, '', 1),
+(29, 38, 1, 1, 1, '100.00', 3, '1, 2, 1, 2', 1),
+(30, 38, 1, 1, 1, '100.00', 3, '', 1),
+(31, 39, 1, 1, 1, '100.00', 3, '1, 2, 1, 2', 1),
+(32, 39, 1, 1, 1, '100.00', 3, '', 1),
+(33, 40, 1, 1, 1, '100.00', 3, '1, 2, 1, 2', 1),
+(34, 40, 1, 1, 1, '100.00', 3, '', 1),
+(35, 41, 1, 1, 1, '100.00', 3, '1, 2, 1, 2', 1),
+(36, 41, 1, 1, 1, '100.00', 3, '', 1),
+(51, 1, 1, 1, 1, '125.00', 3, '1', 1),
+(50, 1, 1, 1, 1, '100.00', 3, '1', 1),
+(43, 42, 1, 1, 1, '125.00', 3, '1', 1),
+(52, 43, 1, 1, 1, '150.00', 3, '1, 2', 1),
+(53, 43, 1, 1, 1, '150.00', 3, '1, 2', 1),
+(54, 44, 1, 1, 1, '150.00', 3, '1, 2', 1);
 
 -- --------------------------------------------------------
 
@@ -297,12 +352,11 @@ CREATE TABLE IF NOT EXISTS `order_details` (
 -- Table structure for table `order_status`
 --
 
-CREATE TABLE IF NOT EXISTS `order_status` (
-  `order_status_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `order_status` (
+  `order_status_id` int(11) NOT NULL,
   `order_status` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`order_status_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=513 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `order_status`
@@ -329,13 +383,12 @@ INSERT INTO `order_status` (`order_status_id`, `order_status`, `status`) VALUES
 -- Table structure for table `pickup_method`
 --
 
-CREATE TABLE IF NOT EXISTS `pickup_method` (
-  `pickup_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pickup_method` (
+  `pickup_id` int(11) NOT NULL,
   `pickup_name` varchar(255) DEFAULT NULL,
   `descriptions` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`pickup_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pickup_method`
@@ -352,12 +405,11 @@ INSERT INTO `pickup_method` (`pickup_id`, `pickup_name`, `descriptions`, `status
 -- Table structure for table `price_package`
 --
 
-CREATE TABLE IF NOT EXISTS `price_package` (
-  `price_package_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `price_package` (
+  `price_package_id` int(11) NOT NULL,
   `price_package_name` varchar(255) NOT NULL,
-  `price_package_status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`price_package_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `price_package_status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `price_package`
@@ -374,22 +426,21 @@ INSERT INTO `price_package` (`price_package_id`, `price_package_name`, `price_pa
 -- Table structure for table `products`
 --
 
-CREATE TABLE IF NOT EXISTS `products` (
-  `product_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `products` (
+  `product_id` int(11) NOT NULL,
   `product_name` varchar(255) NOT NULL,
   `product_image` varchar(255) DEFAULT NULL,
   `created_date` date NOT NULL,
   `modified_date` date NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=142 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `product_image`, `created_date`, `modified_date`, `status`) VALUES
-(1, 'Shirt / T-Shirts', NULL, '2018-05-19', '2018-05-19', 1),
+(1, 'Shirts', NULL, '2018-05-19', '2018-05-19', 1),
 (2, 'Trouser / jeans', NULL, '2018-05-19', '2018-05-19', 1),
 (3, 'Jacket cotton / Safari shirt / Lab Coat', NULL, '2018-05-19', '2018-05-19', 1),
 (4, 'Kurta', NULL, '2018-05-19', '2018-05-19', 1),
@@ -535,22 +586,23 @@ INSERT INTO `products` (`product_id`, `product_name`, `product_image`, `created_
 -- Table structure for table `product_types`
 --
 
-CREATE TABLE IF NOT EXISTS `product_types` (
-  `product_type_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `product_types` (
+  `product_type_id` int(11) NOT NULL,
   `price_package_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `gender_id` int(11) NOT NULL,
   `types_id` int(11) NOT NULL,
-  `product_price` decimal(6,2) NOT NULL,
-  PRIMARY KEY (`product_type_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `product_price` decimal(6,2) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `product_types`
 --
 
 INSERT INTO `product_types` (`product_type_id`, `price_package_id`, `product_id`, `gender_id`, `types_id`, `product_price`) VALUES
-(1, 1, 1, 1, 1, 100.00);
+(1, 1, 2, 1, 1, '100.00'),
+(2, 1, 4, 1, 2, '1110.00'),
+(3, 1, 1, 1, 1, '100.00');
 
 -- --------------------------------------------------------
 
@@ -558,20 +610,27 @@ INSERT INTO `product_types` (`product_type_id`, `price_package_id`, `product_id`
 -- Table structure for table `store`
 --
 
-CREATE TABLE IF NOT EXISTS `store` (
-  `store_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `store` (
+  `store_id` int(11) NOT NULL,
   `store_name` varchar(255) DEFAULT NULL,
-  `store_latitude` decimal(10,6) NOT NULL,
-  `store_longitude` decimal(10,6) NOT NULL,
+  `store_latitude` decimal(10,6) DEFAULT NULL,
+  `store_longitude` decimal(10,6) DEFAULT NULL,
   `store_contact_person` varchar(255) DEFAULT NULL,
   `store_phone_number` varchar(255) DEFAULT NULL,
   `store_email` varchar(255) DEFAULT NULL,
   `store_billing_price` int(11) NOT NULL,
   `store_price` int(11) NOT NULL,
   `store_address` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`store_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `store`
+--
+
+INSERT INTO `store` (`store_id`, `store_name`, `store_latitude`, `store_longitude`, `store_contact_person`, `store_phone_number`, `store_email`, `store_billing_price`, `store_price`, `store_address`, `status`) VALUES
+(1, 'Perfect kumbalam\r\n', '111.000000', '111.000000', 'test', '123456', 'test', 1000, 2000, 'test', 1),
+(2, 'tes@gmail.co', NULL, NULL, 'test', '1111111111', 'test1@gmail.co', 111, 111, '1111111111', 1);
 
 -- --------------------------------------------------------
 
@@ -579,14 +638,13 @@ CREATE TABLE IF NOT EXISTS `store` (
 -- Table structure for table `subscribe`
 --
 
-CREATE TABLE IF NOT EXISTS `subscribe` (
-  `subscribe_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subscribe` (
+  `subscribe_id` int(11) NOT NULL,
   `subscribe_name` varchar(255) NOT NULL,
   `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`subscribe_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subscribe`
@@ -603,12 +661,11 @@ INSERT INTO `subscribe` (`subscribe_id`, `subscribe_name`, `created_date`, `modi
 -- Table structure for table `types`
 --
 
-CREATE TABLE IF NOT EXISTS `types` (
-  `types_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `types` (
+  `types_id` int(11) NOT NULL,
   `types_name` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`types_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `types`
@@ -625,8 +682,8 @@ INSERT INTO `types` (`types_id`, `types_name`, `status`) VALUES
 -- Table structure for table `vehicle`
 --
 
-CREATE TABLE IF NOT EXISTS `vehicle` (
-  `vehicle_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `vehicle` (
+  `vehicle_id` int(11) NOT NULL,
   `driver_id` int(11) NOT NULL,
   `vehicle_name` varchar(255) DEFAULT NULL,
   `vehicle_type` varchar(55) NOT NULL,
@@ -638,9 +695,8 @@ CREATE TABLE IF NOT EXISTS `vehicle` (
   `insurance` varchar(500) DEFAULT NULL,
   `created_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified_date` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`vehicle_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -648,8 +704,8 @@ CREATE TABLE IF NOT EXISTS `vehicle` (
 -- Table structure for table `vendor`
 --
 
-CREATE TABLE IF NOT EXISTS `vendor` (
-  `vendor_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `vendor` (
+  `vendor_id` int(11) NOT NULL,
   `vendor_name` varchar(255) DEFAULT NULL,
   `vendor_latitude` decimal(10,6) NOT NULL,
   `vendor_longitude` decimal(10,6) NOT NULL,
@@ -659,10 +715,270 @@ CREATE TABLE IF NOT EXISTS `vendor` (
   `vendor_billing_price` int(11) NOT NULL,
   `vendor_price` int(11) NOT NULL,
   `vendor_address` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`vendor_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `status` int(11) NOT NULL DEFAULT '1'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `addons`
+--
+ALTER TABLE `addons`
+  ADD PRIMARY KEY (`addons_id`);
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
+-- Indexes for table `customer_delivery_address`
+--
+ALTER TABLE `customer_delivery_address`
+  ADD PRIMARY KEY (`cus_addr_id`);
+
+--
+-- Indexes for table `customer_details`
+--
+ALTER TABLE `customer_details`
+  ADD PRIMARY KEY (`customer_id`);
+
+--
+-- Indexes for table `customer_subscribe`
+--
+ALTER TABLE `customer_subscribe`
+  ADD PRIMARY KEY (`customer_subscribe_id`);
+
+--
+-- Indexes for table `customer_type`
+--
+ALTER TABLE `customer_type`
+  ADD PRIMARY KEY (`customer_type_id`);
+
+--
+-- Indexes for table `driver_details`
+--
+ALTER TABLE `driver_details`
+  ADD PRIMARY KEY (`driver_id`);
+
+--
+-- Indexes for table `gender`
+--
+ALTER TABLE `gender`
+  ADD PRIMARY KEY (`gender_id`);
+
+--
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`order_id`) USING BTREE;
+
+--
+-- Indexes for table `orders_history`
+--
+ALTER TABLE `orders_history`
+  ADD PRIMARY KEY (`order_history_id`) USING BTREE;
+
+--
+-- Indexes for table `order_activity`
+--
+ALTER TABLE `order_activity`
+  ADD PRIMARY KEY (`order_activity_id`);
+
+--
+-- Indexes for table `order_bag`
+--
+ALTER TABLE `order_bag`
+  ADD PRIMARY KEY (`order_bag_id`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`order_details_id`);
+
+--
+-- Indexes for table `order_status`
+--
+ALTER TABLE `order_status`
+  ADD PRIMARY KEY (`order_status_id`);
+
+--
+-- Indexes for table `pickup_method`
+--
+ALTER TABLE `pickup_method`
+  ADD PRIMARY KEY (`pickup_id`);
+
+--
+-- Indexes for table `price_package`
+--
+ALTER TABLE `price_package`
+  ADD PRIMARY KEY (`price_package_id`);
+
+--
+-- Indexes for table `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`product_id`);
+
+--
+-- Indexes for table `product_types`
+--
+ALTER TABLE `product_types`
+  ADD PRIMARY KEY (`product_type_id`);
+
+--
+-- Indexes for table `store`
+--
+ALTER TABLE `store`
+  ADD PRIMARY KEY (`store_id`);
+
+--
+-- Indexes for table `subscribe`
+--
+ALTER TABLE `subscribe`
+  ADD PRIMARY KEY (`subscribe_id`);
+
+--
+-- Indexes for table `types`
+--
+ALTER TABLE `types`
+  ADD PRIMARY KEY (`types_id`);
+
+--
+-- Indexes for table `vehicle`
+--
+ALTER TABLE `vehicle`
+  ADD PRIMARY KEY (`vehicle_id`);
+
+--
+-- Indexes for table `vendor`
+--
+ALTER TABLE `vendor`
+  ADD PRIMARY KEY (`vendor_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `addons`
+--
+ALTER TABLE `addons`
+  MODIFY `addons_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `admin`
+--
+ALTER TABLE `admin`
+  MODIFY `admin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `customer_delivery_address`
+--
+ALTER TABLE `customer_delivery_address`
+  MODIFY `cus_addr_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `customer_details`
+--
+ALTER TABLE `customer_details`
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `customer_subscribe`
+--
+ALTER TABLE `customer_subscribe`
+  MODIFY `customer_subscribe_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `customer_type`
+--
+ALTER TABLE `customer_type`
+  MODIFY `customer_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `driver_details`
+--
+ALTER TABLE `driver_details`
+  MODIFY `driver_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `gender`
+--
+ALTER TABLE `gender`
+  MODIFY `gender_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+--
+-- AUTO_INCREMENT for table `orders_history`
+--
+ALTER TABLE `orders_history`
+  MODIFY `order_history_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `order_activity`
+--
+ALTER TABLE `order_activity`
+  MODIFY `order_activity_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `order_bag`
+--
+ALTER TABLE `order_bag`
+  MODIFY `order_bag_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `order_details_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+--
+-- AUTO_INCREMENT for table `order_status`
+--
+ALTER TABLE `order_status`
+  MODIFY `order_status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=513;
+--
+-- AUTO_INCREMENT for table `pickup_method`
+--
+ALTER TABLE `pickup_method`
+  MODIFY `pickup_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `price_package`
+--
+ALTER TABLE `price_package`
+  MODIFY `price_package_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
+--
+-- AUTO_INCREMENT for table `product_types`
+--
+ALTER TABLE `product_types`
+  MODIFY `product_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `store`
+--
+ALTER TABLE `store`
+  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `subscribe`
+--
+ALTER TABLE `subscribe`
+  MODIFY `subscribe_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `types`
+--
+ALTER TABLE `types`
+  MODIFY `types_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `vehicle`
+--
+ALTER TABLE `vehicle`
+  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `vendor`
+--
+ALTER TABLE `vendor`
+  MODIFY `vendor_id` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -65,7 +65,9 @@
                             </label>
 
                         </div>
-                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
+                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30" style="
+    background-color: #676767;
+">Sign in</button>
                      
                     
                 </div>

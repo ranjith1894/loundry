@@ -23,18 +23,61 @@
                  
                   <div class="col-lg-12">
                     <div class="card ">
-                        <form action="<?php echo site_url('product/update')?>" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="<?php echo site_url('product/update_product_types')?>" method="post" enctype="multipart/form-data" class="form-horizontal">
                       
                             
                              <div class="card-body card-block">
                       
            
-                          <div class="row form-group col-md-6">
-                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Product name</label></div>
-                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="product_name" placeholder="product name" class="form-control"  value="<?=$product_details[0]->product_name?>">
+                          <div class="row form-group col-md-6 col-md-6">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Product</label></div>
+                            <div class="col-12 col-md-9">
+                              <select name="product_id" id="select" class="form-control">
+                                  <?php foreach ($product as $row) { ?>
+                                  <option value="<?=$row->product_id ?>" <?php if($row->product_id == $product_types[0]->product_id) { ?> selected="" <?php } ?>><?=$row->product_name?></option>
+                                  <?php } ?>
+                              </select>
                             </div>
                           </div>
-                        
+                          <div class="row form-group col-md-6 col-md-6">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Price package</label></div>
+                            <div class="col-12 col-md-9">
+                              <select name="price_package_id" id="select" class="form-control">
+                                  <?php foreach ($price_package as $row) { ?>
+                                  <option value="<?=$row->price_package_id ?>" <?php if($row->price_package_id == $product_types[0]->price_package_id) { ?> selected="" <?php } ?>><?=$row->price_package_name?></option>
+                                  <?php } ?>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="row form-group col-md-6 col-md-6">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Types</label></div>
+                            <div class="col-12 col-md-9">
+                              <select name="types_id" id="select" class="form-control">
+                                  <?php foreach ($types as $row) { ?>
+                                  <option value="<?=$row->types_id ?>" <?php if($row->types_id == $product_types[0]->types_id) { ?> selected="" <?php } ?>><?=$row->types_name?></option>
+                                  <?php } ?>
+                              </select>
+                            </div>
+                          </div>
+                           <div class="row form-group col-md-6 col-md-6">
+                            <div class="col col-md-3"><label for="select" class=" form-control-label">Gender</label></div>
+                            <div class="col-12 col-md-9">
+                              <select name="gender_id" id="select" class="form-control">
+                                 <?php foreach ($gender as $row) { ?>
+                                  <option value="<?=$row->gender_id ?>" <?php if($row->gender_id == $product_types[0]->gender_id) { ?> selected="" <?php } ?>><?=$row->gender_name?></option>
+                                  <?php } ?>
+                              </select>
+                            </div>
+                          </div>
+                          
+                          <div class="row form-group col-md-6">
+                            <div class="col col-md-3"><label for="text-input" class=" form-control-label">Item cost</label></div>
+                            <div class="col-12 col-md-9"><input type="text" id="text-input" name="item_cost" placeholder="Cost" class="form-control" value="<?=$product_types[0]->product_price?>">
+                            </div>
+                          </div>
+                      
+                      </div>
+                             
                        
                           
                           
@@ -42,7 +85,7 @@
                           
                       
                       </div>
-                            <input type="hidden" name="id" value="<?=$product_details[0]->product_id?>" >       
+                            <input type="hidden" name="id" value="<?=$product_types[0]->product_type_id?>" >       
                       <div class="">
                         <button type="submit" class="btn btn-primary btn-sm">
                           <i class="fa fa-dot-circle-o"></i> Submit

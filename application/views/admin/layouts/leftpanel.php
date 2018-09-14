@@ -8,14 +8,14 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src="<?=base_url()?>/images/logo.png" alt="Logo"></a>
-                <a class="navbar-brand hidden" href="./"><img src="<?=base_url()?>/images/logo2.png" alt="Logo"></a>
+                <a class="navbar-brand" href="<?=site_url('login/home')?>">Admin</a>
+                <a class="navbar-brand hidden" href="<?=site_url('login/home')?>"><img src="<?=base_url()?>/images/logo2.png" alt="Logo"></a>
             </div>
 
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                        <a href="<?=site_url('login/home')?>"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                 
                     <li class="menu-item-has-children dropdown">
@@ -35,7 +35,10 @@
                         
                     </li>
                     
-
+                     <li class="menu-item-has-children dropdown">
+                        <a href="<?=site_url('store/get')?>" > <i class="menu-icon fa fa-table"></i>Stores</a>
+                        
+                    </li>
                   
                 </ul>
             </div><!-- /.navbar-collapse -->
